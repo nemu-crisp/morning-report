@@ -1,0 +1,195 @@
+:root {
+    --bg-color: #f4e4bc;
+    --text-color: #2c241b;
+    --accent-color: #4a3b2a;
+    --paper-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.08"/></svg>');
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Texturina', serif;
+    margin: 0;
+    padding: 20px;
+    background-image: var(--paper-texture);
+}
+
+.newspaper {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid var(--accent-color);
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+header {
+    text-align: center;
+    border-bottom: 3px double var(--accent-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-family: 'Pirata One', cursive;
+    font-size: 5rem;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.header-top, .header-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding: 5px 0;
+}
+
+.header-top { border-bottom: none; }
+.header-bottom { border-top: none; }
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr; /* 3 columns with wider center */
+    gap: 20px;
+}
+
+.column {
+    padding: 10px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.column:last-child {
+    border-right: none;
+}
+
+/* News Section */
+.news-section article {
+    margin-bottom: 20px;
+    border-bottom: 1px dotted var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.news-section article:last-child {
+    border-bottom: none;
+}
+
+/* Center Column - Moving Image */
+.center-column {
+    text-align: center;
+}
+
+.moving-image-container {
+    border: 5px solid var(--accent-color);
+    padding: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+.moving-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* The Magic */
+    animation: magical-wiggle 6s ease-in-out infinite alternate;
+    filter: sepia(0.3) contrast(1.2);
+}
+
+@keyframes magical-wiggle {
+    0% { transform: scale(1.0) translate(0, 0); }
+    25% { transform: scale(1.02) translate(1px, 1px); }
+    50% { transform: scale(1.0) translate(-1px, -1px) rotate(0.5deg); }
+    75% { transform: scale(1.02) translate(-1px, 1px); }
+    100% { transform: scale(1.0) translate(1px, -1px) rotate(-0.5deg); }
+}
+
+.caption {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Quote & Horoscope */
+.quote-section {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin: 30px 0;
+    padding: 20px;
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.quote-section cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.horoscope-section {
+    background: rgba(0,0,0,0.03);
+    padding: 15px;
+    border: 1px solid var(--accent-color);
+}
+
+/* Code Report */
+.code-report ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.code-report li {
+    margin-bottom: 15px;
+}
+
+.code-report strong {
+    font-family: 'Cinzel', serif;
+    display: block;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 3px double var(--accent-color);
+    padding-top: 10px;
+    font-size: 0.8rem;
+    font-family: 'Cinzel', serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    .column {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    h1 {
+        font-size: 3rem;
+    }
+}
